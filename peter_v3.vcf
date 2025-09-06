@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Douglas;Peter;;;
+FN:Peter Douglas
+ORG:University of North Dakota
+TITLE:Senior, Geological Engineering (remote)
+EMAIL;TYPE=INTERNET,WORK:peter.douglas@und.edu
+TEL;TYPE=CELL:+1-303-905-7770
+URL:https://github.com/pdougla4
+URL:https://www.linkedin.com/in/peteradouglas
+NOTE:Computational & data-driven modeling (TH/THM); ML-assisted UQ & surrogates.
+END:VCARD
