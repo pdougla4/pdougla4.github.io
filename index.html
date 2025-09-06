@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peter Douglas — Portfolio</title>
+  <meta name="description" content="Computational & data-driven modeling (TH/THM) — ML-assisted surrogates, sensitivity (Sobol), UQ." />
+  <meta property="og:title" content="Peter Douglas — Portfolio" />
+  <meta property="og:description" content="TH/THM + ML-assisted surrogates and UQ." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--card:#ffffff;--btn:#0f172a}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
+    .wrap{max-width:720px;margin:0 auto;padding:32px}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px rgba(2,6,23,.08);padding:28px}
+    h1{margin:0 0 6px;font-size:28px}h2{margin:18px 0 10px;font-size:18px}p{margin:6px 0;color:var(--muted)}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+    a.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;background:var(--btn);color:#fff}
+    .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+    .pill{padding:6px 10px;border-radius:999px;background:#e2e8f0;color:#0f172a;text-decoration:none}
+    .section{margin-top:18px;padding-top:12px;border-top:1px solid #e2e8f0}
+    small{color:var(--muted)}
+  </style>
+  <!-- Optional: Plausible analytics (privacy-friendly). Replace domain with your site. -->
+  <!-- <script defer data-domain="USERNAME.github.io" src="https://plausible.io/js/script.js"></script> -->
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Peter Douglas</h1>
+      <p>Geological Engineering — University of North Dakota (remote)</p>
+      <p><strong>Computational &amp; data-driven modeling (TH/THM)</strong> — <em>ML-assisted</em> surrogates, sensitivity (Sobol), uncertainty quantification.</p>
+
+      <div class="buttons">
+        <a class="btn" href="./resume.pdf">Download résumé (PDF)</a>
+        <a class="btn" href="./peter.vcf">Save contact (vCard)</a>
+      </div>
+
+      <div class="links">
+        <a class="pill" href="https://github.com/yourhandle">GitHub</a>
+        <a class="pill" href="https://www.linkedin.com/in/yourhandle">LinkedIn</a>
+        <a class="pill" href="#aeg">AEG</a>
+        <a class="pill" href="#gr">Geothermal Rising</a>
+      </div>
+
+      <div id="aeg" class="section">
+        <h2>AEG — current minis</h2>
+        <ul>
+          <li>Dual-porosity thermal breakthrough + Gaussian-process surrogate (UQ &amp; Sobol).</li>
+          <li>Well-test synthetic → parameter inference (ω, λ, k, skin).</li>
+        </ul>
+      </div>
+
+      <div id="gr" class="section">
+        <h2>GR (late Oct) — in progress</h2>
+        <ul>
+          <li>MOOSE THM doublet with evolving k(ε) + in-situ surrogate (Stochastic Tools).</li>
+        </ul>
+      </div>
+
+      <div class="section"><small>Contact: youremail@domain • UND (remote)</small></div>
+    </div>
+  </div>
+</body>
+</html>
