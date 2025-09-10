@@ -30,7 +30,7 @@
     <div class="card">
       <h1>Peter Douglas</h1>
       <p>Geological Engineering — University of North Dakota (remote)</p>
-      <p><strong>Interested in geothermal reservoir modeling; learning TH/THM + ML-assisted UQ</p>
+      <p>Interested in geothermal reservoir modeling; learning TH/THM + ML-assisted UQ</p>
 
       <div class="buttons">
         <a class="btn" href="./resume.pdf">Download résumé (PDF)</a>
@@ -43,7 +43,29 @@
 <!-- <a class="pill" href="#aeg">AEG</a> -->
 <!-- <a class="pill" href="#gr">Geothermal Rising</a> -->
       </div>
+<section id="senior-design" class="section">
+  <h2>Senior Design <span class="badge">in progress</span></h2>
+  <p>
+    Non-isothermal TH₂M operating envelopes (rate × BHP) for cyclic H₂ in fractured
+    Red River carbonates, with P10/P50/P90 bands and a thermal-stress margin.
+    Lab core-plug tests (intact vs. kerfed) will estimate dual-porosity &lambda; (shape factor)
+    and &omega; (storage ratio); those parameters feed the model. Uncertainty handled with
+    LHS/QMC and Sobol’ indices; outputs include chance-constrained operating points.
+  </p>
 
+  <details>
+    <summary>Show technical plan</summary>
+    <ul>
+      <li>Physics & outputs: Non-isothermal TH₂M; operating envelopes (rate × BHP) with P10/P50/P90 bands and a thermal-stress margin.</li>
+      <li>Lab → model: Core-plug testing (intact vs. kerfed) to infer dual-porosity &lambda; and &omega; by facies, with uncertainty carried into the model.</li>
+      <li>Stack: OpenGeoSys (TH₂M) driven from Python; small CMG cross-check on matched scenarios.</li>
+      <li>UQ: LHS/QMC sampling; global sensitivity (Morris/Sobol’); chance-constrained picks (e.g., P(safe) ≥ 0.9) and a Value-of-Information ranking.</li>
+      <li>Reproducibility: run manifests (CSV) and exact CLI; headless runs; CSV post-processing.</li>
+    </ul>
+  </details>
+
+  <div class="meta">Status: planning &amp; setup • Last updated: <span id="sd-date">Sep 2025</span></div>
+</section>
       <!--
       <div id="aeg" class="section">
         <h2>AEG — current minis</h2>
