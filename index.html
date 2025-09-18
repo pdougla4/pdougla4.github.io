@@ -4,23 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Peter Douglas — Portfolio</title>
-  <meta name="description" content="Computational & data-driven modeling — ML-assisted surrogates, sensitivity (Sobol), UQ." />
+  <meta name="description" content="Temperature-aware operating envelopes for underground H₂ storage (Red River) with AIG/PGN/TSI guardbands, P50/P90 UQ, and lightweight TH2M anchors." />
   <meta property="og:title" content="Peter Douglas — Portfolio" />
-  <meta property="og:description" content="TH/THM + ML-assisted surrogates and UQ." />
+  <meta property="og:description" content="UHS operating envelopes: AIG/PGN/TSI, P50/P90, fast TH dual-porosity + tiny MINC/TH2M anchors. Reproducible & portable." />
   <meta property="og:type" content="website" />
   <style>
     :root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--card:#ffffff;--btn:#0f172a}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
     .wrap{max-width:720px;margin:0 auto;padding:32px}
     .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px rgba(2,6,23,.08);padding:28px}
-    h1{margin:0 0 6px;font-size:28px}h2{margin:18px 0 10px;font-size:18px}p{margin:6px 0;color:var(--muted)}
+    h1{margin:0 0 6px;font-size:28px}
+    h2{margin:18px 0 10px;font-size:18px}
+    p{margin:6px 0;color:var(--muted)}
     .buttons{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
     a.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;background:var(--btn);color:#fff}
     .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
     .pill{padding:6px 10px;border-radius:999px;background:#e2e8f0;color:#0f172a;text-decoration:none}
     .section{margin-top:18px;padding-top:12px;border-top:1px solid #e2e8f0}
-    .hidden{display:none}
+    .badge{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#0f172a;font-size:12px;vertical-align:middle}
+    .meta{margin-top:8px;color:var(--muted);font-size:13px}
     small{color:var(--muted)}
+    summary{cursor:pointer}
   </style>
   <!-- Optional: Plausible analytics (privacy-friendly). Replace domain with your site. -->
   <!-- <script defer data-domain="USERNAME.github.io" src="https://plausible.io/js/script.js"></script> -->
@@ -30,7 +35,7 @@
     <div class="card">
       <h1>Peter Douglas</h1>
       <p>Geological Engineering — University of North Dakota (remote)</p>
-      <p>Interested in geothermal reservoir modeling; learning TH/THM + ML-assisted UQ</p>
+      <p>Subsurface energy storage & geothermal — thermal/flow modeling, uncertainty quantification, and reproducible workflows.</p>
 
       <div class="buttons">
         <a class="btn" href="./resume.pdf">Download résumé (PDF)</a>
@@ -40,50 +45,34 @@
       <div class="links">
         <a class="pill" href="https://github.com/pdougla4">GitHub</a>
         <a class="pill" href="https://www.linkedin.com/in/peteradouglas">LinkedIn</a>
-<!-- <a class="pill" href="#aeg">AEG</a> -->
-<!-- <a class="pill" href="#gr">Geothermal Rising</a> -->
       </div>
-<section id="senior-design" class="section">
-  <h2>Senior Design <span class="badge">in progress</span></h2>
-  <p>
-    Non-isothermal TH₂M operating envelopes (rate × BHP) for cyclic H₂ in fractured
-    Red River carbonates, with P10/P50/P90 bands and a thermal-stress margin.
-    Lab core-plug tests (intact vs. kerfed) will estimate dual-porosity &lambda; (shape factor)
-    and &omega; (storage ratio); those parameters feed the model. Uncertainty handled with
-    LHS/QMC and Sobol’ indices; outputs include chance-constrained operating points.
-  </p>
 
-  <details>
-    <summary>Show technical plan</summary>
-    <ul>
-      <li>Physics & outputs: Non-isothermal TH₂M; operating envelopes (rate × BHP) with P10/P50/P90 bands and a thermal-stress margin.</li>
-      <li>Lab → model: Core-plug testing (intact vs. kerfed) to infer dual-porosity &lambda; and &omega; by facies, with uncertainty carried into the model.</li>
-      <li>Stack: OpenGeoSys (TH₂M) driven from Python; small CMG cross-check on matched scenarios.</li>
-      <li>UQ: LHS/QMC sampling; global sensitivity (Morris/Sobol’); chance-constrained picks (e.g., P(safe) ≥ 0.9) and a Value-of-Information ranking.</li>
-      <li>Reproducibility: run manifests (CSV) and exact CLI; headless runs; CSV post-processing.</li>
-    </ul>
-  </details>
+      <section id="senior-design" class="section">
+        <h2>Senior Design — Red River UHS Operating Envelope <span class="badge">in progress</span></h2>
+        <p>
+          I’m building a <strong>temperature-aware operating envelope</strong> for underground H₂ storage in the Red River A–C intervals:
+          allowable <em>(ΔT, rate q, BHP)</em> combinations that satisfy three guardbands —
+          <strong>AIG</strong> (caprock integrity under pressure + thermal stress),
+          <strong>PGN</strong> (capillary sealing slack vs buoyancy), and
+          <strong>TSI</strong> (thermal-shock risk).
+          Outputs include <strong>P50/P90</strong> confidence bands and a <strong>probability-of-compliance</strong> curve. A
+          fast dual-porosity <strong>TH</strong> kernel drives UQ; a few tiny <strong>MINC</strong> and <strong>TH2M</strong> anchors validate exchange timing and stress coupling.
+        </p>
 
-  <div class="meta">Status: planning &amp; setup • Last updated: <span id="sd-date">Sep 2025</span></div>
-</section>
-      <!--
-      <div id="aeg" class="section">
-        <h2>AEG — current minis</h2>
-        <ul>
-          <li>Dual-porosity thermal breakthrough + Gaussian-process surrogate (UQ &amp; Sobol).</li>
-          <li>Well-test synthetic → parameter inference (ω, λ, k, skin).</li>
-        </ul>
-      </div>
-      -->
+        <details>
+          <summary>Show technical plan</summary>
+          <ul>
+            <li><strong>Physics & outputs:</strong> Fast two-phase <strong>TH dual-porosity</strong> (Warren–Root + heat) for UQ; envelope of allowable <em>(ΔT, q, BHP)</em> with <strong>P50/P90</strong> bands and compliance curve.</li>
+            <li><strong>Guardbands:</strong> <em>AIG</em> (Biot + thermoelastic demand vs conservative microcrack/frac threshold), <em>PGN</em> (Pc50 vs Δρ g h with IFT(T,P,S), wettability), <em>TSI</em> (σ<sub>th</sub>(ΔT)/σ<sub>microcrack</sub>).</li>
+            <li><strong>Anchors:</strong> <em>MINC</em> (3–4 shells) for matrix↔fracture exchange timing; small <em>TH2M</em> near-well/caprock micro-cases to calibrate partial-restraint <em>R</em>. Engines: <strong>OpenGeoSys</strong>; optional <strong>CMG</strong> cross-check.</li>
+            <li><strong>Lab → model:</strong> Primary: Amott (Pc endpoints), low-field NMR T₂ (storativity split ω), contact angle (incl. anhydrite). Secondary: kerfed imbibition + He poro/perm (k<sub>m</sub>, secondary φ), oriented plugs (k<sub>h</sub>, k<sub>v</sub>). Spacing <em>L</em> from slab photos → shape factor σ → exchange λ.</li>
+            <li><strong>UQ:</strong> <em>LHS → Morris → Sobol</em> on trimmed drivers; bootstrapped quantiles. <em>VoI</em> recommends at most one next test if it materially shrinks P90–P50.</li>
+            <li><strong>Reproducibility:</strong> repo with Docker/CI, <code>runs.csv</code>, <code>commands.txt</code>, and a one-page Datasheet (PDF + JSON).</li>
+          </ul>
+        </details>
 
-      <!--
-      <div id="gr" class="section">
-        <h2>GR (late Oct) — in progress</h2>
-        <ul>
-          <li>MOOSE THM doublet with evolving k(ε) + in-situ surrogate (Stochastic Tools).</li>
-        </ul>
-      </div>
-      -->
+        <div class="meta">Status: planning &amp; setup • Last updated: <span id="sd-date">Sep 2025</span></div>
+      </section>
 
       <div class="section"><small>Contact: peter.douglas@und.edu</small></div>
     </div>
