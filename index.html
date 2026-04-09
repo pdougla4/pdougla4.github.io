@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Peter Douglas — Portfolio</title>
-  <meta name="description" content="Temperature-aware operating envelopes for underground H₂ storage (Red River) with AIG/PGN/TSI guardbands, P50/P90 UQ, and lightweight TH2M anchors." />
+  <meta name="description" content="Temperature-aware operating envelopes for underground H₂ storage (Red River) with AIG/PGN/RMG guardbands, P50/P90 UQ, and CO₂-EOR transition analysis." />
   <meta property="og:title" content="Peter Douglas — Portfolio" />
-  <meta property="og:description" content="UHS operating envelopes: AIG/PGN/TSI, P50/P90, fast TH dual-porosity + tiny MINC/TH2M anchors. Reproducible & portable." />
+  <meta property="og:description" content="UHS operating envelopes: AIG/PGN/RMG, P50/P90 UQ, Warren-Root dual-porosity kernel, and CO₂-EOR dual-use transition." />
   <meta property="og:type" content="website" />
   <style>
     :root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--card:#ffffff;--btn:#0f172a}
@@ -36,6 +36,7 @@
       <h1>Peter Douglas</h1>
       <p>Geological Engineering — University of North Dakota (remote)</p>
       <p>Subsurface energy storage & geothermal — thermal/flow modeling, uncertainty quantification, and reproducible workflows.</p>
+      <p>Senior design: underground hydrogen storage operating envelopes + CO₂-EOR dual-use transition, Red River Formation, Williston Basin.</p>
 
       <div class="buttons">
         <a class="btn" href="./resume.pdf">Download résumé (PDF)</a>
@@ -48,34 +49,30 @@
       </div>
 
       <section id="senior-design" class="section">
-        <h2>Senior Design — Red River UHS Operating Envelope <span class="badge">in progress</span></h2>
+        <h2>Senior Design — Red River UHS Operating Envelope <span class="badge">analysis complete</span></h2>
         <p>
-          I’m building a <strong>temperature-aware operating envelope</strong> for underground H₂ storage in the Red River A–C intervals:
-          allowable <em>(ΔT, rate q, BHP)</em> combinations that satisfy three guardbands —
-          <strong>AIG</strong> (caprock integrity under pressure + thermal stress),
-          <strong>PGN</strong> (capillary sealing slack vs buoyancy), and
-          <strong>TSI</strong> (thermal-shock risk).
-          Outputs include <strong>P50/P90</strong> confidence bands and a <strong>probability-of-compliance</strong> curve. A
-          fast dual-porosity <strong>TH</strong> kernel drives UQ; a few tiny <strong>MINC</strong> and <strong>TH2M</strong> anchors validate exchange timing and stress coupling.
+          Built a <strong>temperature-aware Safe Operating Envelope (SOE)</strong> for underground H₂ storage in the Red River A–C intervals (Williston Basin):
+          allowable <em>(q, ΔT)</em> combinations satisfying three guardbands —
+          <strong>AIG</strong> (Anhydrite Integrity Guard: caprock thermo-mechanical integrity, thermal effects embedded),
+          <strong>PGN</strong> (capillary seal stability and fingering resistance), and
+          <strong>RMG</strong> (Reservoir Mechanical Guard: near-wellbore thermal embrittlement).
+          A <strong>No-False-Green</strong> policy enforces P90 conservative boundaries; regions near thresholds derate to amber/red automatically.
+          A secondary sub-project evaluates the same formation as a <strong>CO₂-EOR</strong> target — quantifying incremental recovery and sequestration potential using CMG/GEM compositional simulation.
         </p>
 
         <details>
-          <summary>Show technical plan</summary>
+          <summary>Show technical details</summary>
           <ul>
-            <li><strong>Physics & outputs:</strong> Fast two-phase <strong>TH dual-porosity</strong> (Warren–Root + heat) for UQ; envelope of allowable <em>(ΔT, q, BHP)</em> with <strong>P50/P90</strong> bands and compliance curve.</li>
-            <li><strong>Guardbands:</strong> <em>AIG</em> (Biot + thermoelastic demand vs conservative microcrack/frac threshold), <em>PGN</em> (Pc50 vs Δρ g h with IFT(T,P,S), wettability), <em>TSI</em> (σ<sub>th</sub>(ΔT)/σ<sub>microcrack</sub>).</li>
-            <li><strong>Anchors:</strong> <em>MINC</em> (3–4 shells) for matrix↔fracture exchange timing; small <em>TH2M</em> near-well/caprock micro-cases to calibrate partial-restraint <em>R</em>. Engines: <strong>OpenGeoSys</strong>; optional <strong>CMG</strong> cross-check.</li>
-            <li><strong>Lab → model:</strong> Primary: Amott (Pc endpoints), low-field NMR T₂ (storativity split ω), contact angle (incl. anhydrite). Secondary: kerfed imbibition + He poro/perm (k<sub>m</sub>, secondary φ), oriented plugs (k<sub>h</sub>, k<sub>v</sub>). Spacing <em>L</em> from slab photos → shape factor σ → exchange λ.</li>
-            <li><strong>UQ:</strong> <em>LHS → Morris → Sobol</em> on trimmed drivers; bootstrapped quantiles. <em>VoI</em> recommends at most one next test if it materially shrinks P90–P50.</li>
-            <li><strong>Reproducibility:</strong> repo with Docker/CI, <code>runs.csv</code>, <code>commands.txt</code>, and a one-page Datasheet (PDF + JSON).</li>
+            <li><strong>Kernel:</strong> Closed-form <strong>Warren–Root dual-porosity + heat</strong> (Python) — Stehfest inversion for pressure, erfc analytical solution for caprock thermal attenuation, periodic steady-state for cycle thermal memory. No numerical PDE solvers.</li>
+            <li><strong>Guardbands:</strong> <em>AIG</em> (Mohr-Coulomb / Hoek-Brown caprock screen, FoS = 1.75, H₂ chemical embrittlement per Aluah et al. 2025); <em>PGN</em> (Brooks-Corey drainage, J-scaled Pc, M / Ca / G stability regimes); <em>RMG</em> (reservoir carbonate thermal embrittlement, FoS = 1.5).</li>
+            <li><strong>UQ:</strong> LHS on broad priors → physical pre-filter → <em>Morris screening</em> → <em>Sobol analysis</em> on reduced parameter set at representative (q, ΔT) points. Key finding: caprock pore throat radius drives ~85% of total-order sensitivity — flagged as primary limitation pending direct measurement.</li>
+            <li><strong>Lab inputs:</strong> Hassler brine permeability, NMR T₂, Amott wettability, sessile-drop contact angle, pendant-drop IFT. Red River core plugs and caprock plates from three wells.</li>
+            <li><strong>CO₂-EOR:</strong> CMG/GEM sector model (Red River A); +15.8% incremental oil recovery, 13.7 BCF storage capacity, 104–109 M lb CO₂ sequestered over 30-year horizon.</li>
+            <li><strong>Note:</strong> TH2M / MINC anchors were planned for stress-coupling validation but dropped due to time constraints; conservatism is maintained through explicit FoS margins and the P90 boundary policy.</li>
           </ul>
         </details>
 
-        <div class="meta">Status: planning &amp; setup • Last updated: <span id="sd-date">Oct 2025</span></div>
+        <div class="meta">Status: analysis complete — presentation &amp; report preparation • Last updated: <span id="sd-date">Apr 2026</span></div>
       </section>
 
-      <div class="section"><small>Contact: peter.douglas@und.edu</small></div>
-    </div>
-  </div>
-</body>
-</html>
+      <div class="section"><small>Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail
