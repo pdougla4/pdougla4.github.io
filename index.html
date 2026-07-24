@@ -2,77 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Peter Douglas — Portfolio</title>
-  <meta name="description" content="Temperature-aware operating envelopes for underground H₂ storage (Red River) with AIG/PGN/RMG guardbands, P50/P90 UQ, and CO₂-EOR transition analysis." />
-  <meta property="og:title" content="Peter Douglas — Portfolio" />
-  <meta property="og:description" content="UHS operating envelopes: AIG/PGN/RMG, P50/P90 UQ, Warren-Root dual-porosity kernel, and CO₂-EOR dual-use transition." />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>Peter Douglas — Geological Engineering Portfolio</title>
+
+  <meta
+    name="description"
+    content="Geological engineering portfolio featuring subsurface modeling, uncertainty quantification, reservoir analysis, geomechanics, and reproducible Python workflows."
+  />
+
+  <meta
+    property="og:title"
+    content="Peter Douglas — Geological Engineering Portfolio"
+  />
+
+  <meta
+    property="og:description"
+    content="Projects in subsurface energy, reservoir analysis, geomechanics, uncertainty quantification, and scientific computing."
+  />
+
   <meta property="og:type" content="website" />
+
   <style>
-    :root{--fg:#0f172a;--muted:#475569;--bg:#f8fafc;--card:#ffffff;--btn:#0f172a}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
-    .wrap{max-width:720px;margin:0 auto;padding:32px}
-    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px rgba(2,6,23,.08);padding:28px}
-    h1{margin:0 0 6px;font-size:28px}
-    h2{margin:18px 0 10px;font-size:18px}
-    p{margin:6px 0;color:var(--muted)}
-    .buttons{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
-    a.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;background:var(--btn);color:#fff}
-    .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-    .pill{padding:6px 10px;border-radius:999px;background:#e2e8f0;color:#0f172a;text-decoration:none}
-    .section{margin-top:18px;padding-top:12px;border-top:1px solid #e2e8f0}
-    .badge{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#0f172a;font-size:12px;vertical-align:middle}
-    .meta{margin-top:8px;color:var(--muted);font-size:13px}
-    small{color:var(--muted)}
-    summary{cursor:pointer}
-  </style>
-  <!-- Optional: Plausible analytics (privacy-friendly). Replace domain with your site. -->
-  <!-- <script defer data-domain="USERNAME.github.io" src="https://plausible.io/js/script.js"></script> -->
-</head>
-<body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Peter Douglas</h1>
-      <p>Geological Engineering — University of North Dakota (remote)</p>
-      <p>Subsurface energy storage & geothermal — thermal/flow modeling, uncertainty quantification, and reproducible workflows.</p>
-      <p>Senior design: underground hydrogen storage operating envelopes + CO₂-EOR dual-use transition, Red River Formation, Williston Basin.</p>
+    :root {
+      --fg: #0f172a;
+      --muted: #475569;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --btn: #0f172a;
+      --border: #e2e8f0;
+      --pill: #e2e8f0;
+    }
 
-      <div class="buttons">
-        <a class="btn" href="./resume.pdf">Download résumé (PDF)</a>
-        <a class="btn" href="./peter.vcf">Save contact (vCard)</a>
-      </div>
+    * {
+      box-sizing: border-box;
+    }
 
-      <div class="links">
-        <a class="pill" href="https://github.com/pdougla4">GitHub</a>
-        <a class="pill" href="https://www.linkedin.com/in/peteradouglas">LinkedIn</a>
-      </div>
+    html {
+      scroll-behavior: smooth;
+    }
 
-      <section id="senior-design" class="section">
-        <h2>Senior Design — Red River UHS Operating Envelope <span class="badge">analysis complete</span></h2>
-        <p>
-          Built a <strong>temperature-aware Safe Operating Envelope (SOE)</strong> for underground H₂ storage in the Red River A–C intervals (Williston Basin):
-          allowable <em>(q, ΔT)</em> combinations satisfying three guardbands —
-          <strong>AIG</strong> (Anhydrite Integrity Guard: caprock thermo-mechanical integrity, thermal effects embedded),
-          <strong>PGN</strong> (capillary seal stability and fingering resistance), and
-          <strong>RMG</strong> (Reservoir Mechanical Guard: near-wellbore thermal embrittlement).
-          A <strong>No-False-Green</strong> policy enforces P90 conservative boundaries; regions near thresholds derate to amber/red automatically.
-          A secondary sub-project evaluates the same formation as a <strong>CO₂-EOR</strong> target — quantifying incremental recovery and sequestration potential using CMG/GEM compositional simulation.
-        </p>
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font:
+        16px/1.5 system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Inter,
+        Roboto,
+        Arial,
+        sans-serif;
+    }
 
-        <details>
-          <summary>Show technical details</summary>
-          <ul>
-            <li><strong>Kernel:</strong> Closed-form <strong>Warren–Root dual-porosity + heat</strong> (Python) — Stehfest inversion for pressure, erfc analytical solution for caprock thermal attenuation, periodic steady-state for cycle thermal memory. No numerical PDE solvers.</li>
-            <li><strong>Guardbands:</strong> <em>AIG</em> (Mohr-Coulomb / Hoek-Brown caprock screen, FoS = 1.75, H₂ chemical embrittlement per Aluah et al. 2025); <em>PGN</em> (Brooks-Corey drainage, J-scaled Pc, M / Ca / G stability regimes); <em>RMG</em> (reservoir carbonate thermal embrittlement, FoS = 1.5).</li>
-            <li><strong>UQ:</strong> LHS on broad priors → physical pre-filter → <em>Morris screening</em> → <em>Sobol analysis</em> on reduced parameter set at representative (q, ΔT) points. Key finding: caprock pore throat radius drives ~85% of total-order sensitivity — flagged as primary limitation pending direct measurement.</li>
-            <li><strong>Lab inputs:</strong> Hassler brine permeability, NMR T₂, Amott wettability, sessile-drop contact angle, pendant-drop IFT. Red River core plugs and caprock plates from three wells.</li>
-            <li><strong>CO₂-EOR:</strong> CMG/GEM sector model (Red River A); +15.8% incremental oil recovery, 13.7 BCF storage capacity, 104–109 M lb CO₂ sequestered over 30-year horizon.</li>
-            <li><strong>Note:</strong> TH2M / MINC anchors were planned for stress-coupling validation but dropped due to time constraints; conservatism is maintained through explicit FoS margins and the P90 boundary policy.</li>
-          </ul>
-        </details>
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px;
+    }
 
-        <div class="meta">Status: analysis complete — presentation &amp; report preparation • Last updated: <span id="sd-date">Apr 2026</span></div>
-      </section>
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(2, 6, 23, 0.08);
+      padding: 28px;
+    }
 
-      <div class="section"><small>Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail
+    h1 {
+      margin: 0 0 6px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin: 18px 0 10px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 7px 0;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 12px 0 4px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--fg);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    a.btn {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      background: var(--btn);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    a.btn:hover,
+    a.btn:focus-visible {
+      opacity: 0.88;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--pill);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pill:hover,
+    .pill:focus-visible {
+      background: #cbd5e1;
+    }
+
+    .section {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--pill);
+      color: var(--fg);
+      font-size: 12px;
+      font-weight: 500
